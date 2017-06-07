@@ -58,6 +58,7 @@
 	echo '
 					<font size="2">
 						<a href="orders.php">Новые заказы: ', count($orderscount), '</a>
+						<a href="admin_cabinet.php">Кабинет администратора</a>
 					</font>
 					';
 	}
@@ -115,10 +116,17 @@
 			</tr>
 			<tr>
 			<td colspan="4" ALIGN=CENTER> 
-				<font size="5" color="brown" face="Arial">Мы всегда рады видеть вас в нашем магазине! </font>
+				<font size="5" color="brown" face="Arial">
+				<?		
+					$daynews=file('files/daynews.txt', FILE_IGNORE_NEW_LINES);
+					for ($i=0; $i<count($daynews); $i++) {
+						echo $daynews[$i];
+					}
+				?></font>
 			</td>
 		</tr>
 <?php 
+	
 	$productnames=file('files/1.productnames.txt', FILE_IGNORE_NEW_LINES);
 	$productdescs=file('files/1.productdescs.txt', FILE_IGNORE_NEW_LINES);
 	$productimgs=file('files/1.productimgs.txt', FILE_IGNORE_NEW_LINES);
@@ -210,11 +218,14 @@ if (isset($_SESSION['login']) && isset($_SESSION['adminmode']))
 			<tr>
 				<td colspan="4">
 					<p ALIGN=CENTER>
-<?php
-	$f_contents = file("files/banner.txt");  
-	$banner = $f_contents[array_rand($f_contents)];  
-	echo $banner;
-?>
+					<?php
+						$bannernames=file('files/bannernames.txt', FILE_IGNORE_NEW_LINES);
+						$bannerimgs=file('files/bannerimgs.txt', FILE_IGNORE_NEW_LINES);
+						$bannersrcs=file('files/bannersrcs.txt', FILE_IGNORE_NEW_LINES);
+						for ($i=0; $i<count($bannernames); $i++){
+							echo '<a href="',$bannersrcs[$i],'" > <img style="height: 140px; width: 580px;" src="banners/',$bannerimgs[$i],'"></a>';
+						}
+					?>				
 					</p>
 				</td>
 			</tr>

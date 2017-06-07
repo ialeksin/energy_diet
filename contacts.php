@@ -52,6 +52,16 @@
 					</font>
 					';
 	}
+	else
+	{
+	$orderscount=file('files/ordersitems.txt', FILE_IGNORE_NEW_LINES);
+	echo '
+					<font size="2">
+						<a href="orders.php">Новые заказы: ', count($orderscount), '</a>
+						<a href="admin_cabinet.php">Кабинет администратора</a>
+					</font>
+					';
+	}
 	echo '
 				</td>
 			</tr>

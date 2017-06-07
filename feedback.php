@@ -62,6 +62,7 @@
 	echo '
 					<font size="2">
 						<a href="orders.php">Новые заказы: ', count($orderscount), '</a>
+						<a href="admin_cabinet.php">Кабинет администратора</a>
 					</font>
 					';
 	}
